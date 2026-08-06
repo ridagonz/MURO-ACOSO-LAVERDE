@@ -12,7 +12,10 @@ test("declares the finished site's metadata and main sections", async () => {
 
   assert.match(layout, /Muro de Acoso de Jorge Eli(?:é|\u00e9)cer Laverde/);
   assert.match(page, /id="fuentes"/);
+  assert.match(page, /id="informe"/);
   assert.match(page, /id="muro"/);
+  assert.match(page, /Paisa_Antiuribe\/status\/2085160382478565576/);
+  assert.match(page, /SaVanessCa\/status\/2084743546133696830/);
   assert.match(page, /<ImageUploader \/>/);
   assert.doesNotMatch(page, /_sites-preview|SkeletonPreview|codex-preview/);
 });
@@ -29,6 +32,12 @@ test("keeps every curated image referenced by the home page", async () => {
     "public/x/maria-jimena-duzan.png",
     "public/x/ricardo-ospina.png",
     "public/x/radar-contralor.png",
+    "public/x/medallo-mor-media.jpg",
+    "public/x/vanessa-la-buena-media.jpg",
+    "public/x/vanessa-la-buena-rolex.jpg",
+    "public/instagram/maria-camila-laverde-1.jpg",
+    "public/instagram/jorge-laverde-maria-camila.jpg",
+    "public/instagram/maria-camila-familia.jpg",
     "public/documentos/consulta-general-inmuebles.jpeg",
   ];
 
@@ -38,9 +47,10 @@ test("keeps every curated image referenced by the home page", async () => {
   }
 });
 
-test("publishes both contributed PDFs from the document library", async () => {
+test("publishes every contributed PDF from the document library", async () => {
   const page = await readFile(new URL("app/page.tsx", projectRoot), "utf8");
   const pdfPaths = [
+    "public/documentos/info-laverde.pdf",
     "public/documentos/139719766-139721531-WPADDPHOJVQXGBTJREJI139721531.pdf",
     "public/documentos/139719765-139721530-VAGIWOXIDZATNRZCCQAY139721530.pdf",
   ];
