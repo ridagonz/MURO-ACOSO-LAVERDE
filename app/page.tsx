@@ -54,29 +54,19 @@ const screenshots = [
     src: "/documentos/consulta-general-inmuebles.jpeg",
     title: "Consulta general de inmuebles",
     description:
-      "Captura aportada de una consulta de estado jurídico de inmuebles. Se conserva con el aviso de confidencialidad incluido en el archivo original.",
+      "Captura aportada de una consulta de estado jurídico de inmuebles, conservada con el aviso de confidencialidad incluido en el archivo original.",
   },
 ];
 
-const documents = [
-  {
-    number: "01",
-    title: "INFO LAVERDE — documento central",
-    pages: "3 páginas · PDF",
-    href: "/documentos/info-laverde.pdf",
-  },
-  {
-    number: "02",
-    title: "Informe documental 139719766",
-    pages: "6 páginas · PDF",
-    href: "/documentos/139719766-139721531-WPADDPHOJVQXGBTJREJI139721531.pdf",
-  },
-  {
-    number: "03",
-    title: "Informe documental 139719765",
-    pages: "5 páginas · PDF",
-    href: "/documentos/139719765-139721530-VAGIWOXIDZATNRZCCQAY139721530.pdf",
-  },
+const heroImages = [
+  "/campana/contralor-laverde-1.jpeg",
+  "/campana/contralor-laverde-2.jpeg",
+  "/x/medallo-mor-media.jpg",
+  "/x/vanessa-la-buena-media.jpg",
+  "/laverde/laverde-3.jpg",
+  "/instagram/jorge-laverde-maria-camila.jpg",
+  "/laverde/laverde-5.jpeg",
+  "/instagram/maria-camila-familia.jpg",
 ];
 
 const medalloPost = [
@@ -103,62 +93,88 @@ export default function Home() {
           "/laverde/laverde-4.jpeg",
           "/laverde/laverde-5.jpeg",
           "/laverde/laverde-6.png",
-          "/laverde/laverde-3.jpg",
-          "/laverde/laverde-1.jpg",
-          "/laverde/laverde-5.jpeg",
+          "/instagram/jorge-laverde-maria-camila.jpg",
+          "/x/medallo-mor-media.jpg",
+          "/instagram/maria-camila-familia.jpg",
         ].map((src, index) => (
-          <div className={`background-tile background-tile-${index + 1}`} key={`${src}-${index}`}>
+          <div className={`background-tile background-tile-${index + 1}`} key={src}>
             <img src={src} alt="" loading="eager" />
           </div>
         ))}
       </div>
 
       <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="Ir al informe central">
+        <a className="brand" href="#inicio" aria-label="Ir al inicio">
           <span className="brand-mark">#</span>
           <span>Contra el acoso</span>
         </a>
         <nav aria-label="Navegación principal">
-          <a href="#inicio">Informe central</a>
-          <a href="#informe">INFO LAVERDE</a>
-          <a href="#fuentes">Publicaciones</a>
-          <a href="#documentos">Documentos</a>
-          <a href="#aportes">Cargar imágenes</a>
+          <a href="#inicio">Inicio</a>
+          <a href="#fuentes">Publicaciones en X</a>
+          <a href="#investigacion">Investigación</a>
+          <a href="#amistades">Amistades</a>
+          <a href="#muro">El muro</a>
         </nav>
         <a className="header-cta" href="#fuentes">
           Ver publicaciones <span aria-hidden="true">↓</span>
         </a>
       </header>
 
-      <section className="central-story" id="inicio">
-        <div className="central-story-inner section-shell">
-          <div className="central-copy">
-            <p className="kicker"><span /> Información central · Publicaciones enlazadas</p>
-            <h1>
-              <span>AL MEJOR ESTILO DE MARIO CASTAÑO,</span> Jorge Laverde,
-              candidato a Contralor General, estaría ofreciendo negocios a los
-              congresistas derivados de las auditorías que tendría que adelantar la
-              entidad en su ejercicio de control fiscal
-            </h1>
-            <div className="central-summary">
-              <p>
-                Se ha llegado a hablar de cifras exorbitantes, contratos de 500 mil
-                millones de pesos y cuantiosas sumas de dinero a cambio de votos.
-              </p>
-              <p>
-                Quiénes son los financiadores de estos compromisos. Ese es el gran
-                interrogante. Algunos hablan de empresarios y otros de personas de no
-                muy buena reputación.
-              </p>
+      <section className="hero" id="inicio">
+        <div className="hero-collage hero-collage-mosaic" aria-hidden="true">
+          {heroImages.map((src, index) => (
+            <div className={`hero-photo hero-photo-${index + 1}`} key={src}>
+              <img src={src} alt="" loading="eager" />
             </div>
-            <p className="central-disclaimer">
-              Este encabezado recoge versiones y señalamientos difundidos por terceros.
-              No presenta esas afirmaciones como hechos probados. Cada publicación se
-              enlaza para consultar su fuente y contexto originales.
-            </p>
-          </div>
+          ))}
+        </div>
 
-          <div className="featured-posts" id="fuentes">
+        <div className="hero-topline">
+          <span>No podemos premiar el acoso</span>
+          <span>Colombia está en alerta</span>
+        </div>
+
+        <div className="hero-copy">
+          <p className="kicker"><span /> #ContralorLaverde · Archivo ciudadano</p>
+          <h1>
+            Muro de <em>Acoso</em>
+            <br />
+            de Jorge Eliécer Laverde
+          </h1>
+          <p className="hero-description">
+            Un archivo visual que reúne publicaciones, capturas y enlaces de interés
+            público alrededor de su aspiración a la Contraloría General.
+          </p>
+        </div>
+
+        <div className="hero-footer">
+          <div className="hero-index">
+            <span>6</span>
+            <p>publicaciones en X</p>
+          </div>
+          <div className="hero-index">
+            <span>8</span>
+            <p>piezas visuales enlazadas</p>
+          </div>
+          <p className="hero-disclaimer">
+            Este sitio recopila expresiones de terceros y no reemplaza una decisión
+            judicial ni disciplinaria. Consulte siempre la fuente original.
+          </p>
+        </div>
+      </section>
+
+      <div className="ticker" aria-label="Archivo de publicaciones y denuncias">
+        <div className="ticker-track">
+          <span>INVESTIGACIÓN PERIODÍSTICA</span><i>✦</i><span>FUENTES ENLAZADAS</span><i>✦</i>
+          <span>EVIDENCIAS VISUALES</span><i>✦</i><span>MEMORIA DIGITAL</span><i>✦</i>
+          <span aria-hidden="true">INVESTIGACIÓN PERIODÍSTICA</span><i aria-hidden="true">✦</i>
+          <span aria-hidden="true">FUENTES ENLAZADAS</span><i aria-hidden="true">✦</i>
+        </div>
+      </div>
+
+      <section className="central-story" id="fuentes">
+        <div className="central-story-inner section-shell">
+          <div className="featured-posts">
             <div className="featured-posts-heading">
               <p>Publicaciones en X</p>
               <span>Haga clic en cada ficha para abrir la fuente original ↗</span>
@@ -214,6 +230,7 @@ export default function Home() {
                     </span>
                     <span className="x-logo" aria-hidden="true">X</span>
                   </header>
+                  <h2 className="x-post-feature-title">Una vida ostentosa de dudosa procedencia</h2>
                   <div className="x-post-text x-post-text-large">
                     {vanessaPost.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                   </div>
@@ -230,7 +247,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="quoted-context">
-                    <strong>Contexto citado en la publicación</strong>
+                    <strong>Publicación relacionada</strong>
                     <p>
                       La ficha enlazada incorpora una respuesta de María Jimena Duzán
                       sobre la trayectoria política de Jorge Eliécer Laverde.
@@ -244,79 +261,73 @@ export default function Home() {
               </a>
             </div>
           </div>
+
+          <div className="central-context">
+            <div className="central-copy">
+              <p className="kicker"><span /> El interrogante alrededor de la elección</p>
+              <p className="central-rubric">Al mejor estilo de Mario Castaño</p>
+              <h2>
+                <span>Jorge Laverde, candidato a Contralor General,</span>
+                estaría ofreciendo negocios a los congresistas derivados de las
+                auditorías que tendría que adelantar la entidad en su ejercicio de
+                control fiscal.
+              </h2>
+              <div className="central-summary">
+                <p>
+                  Se ha llegado a hablar de cifras exorbitantes, contratos de 500 mil
+                  millones de pesos y cuantiosas sumas de dinero a cambio de votos.
+                </p>
+                <p>
+                  ¿Quiénes son los financiadores de estos compromisos? Ese es el gran
+                  interrogante. Algunas versiones hablan de empresarios y otras de
+                  personas de no muy buena reputación.
+                </p>
+              </div>
+              <p className="central-disclaimer">
+                Este bloque recoge versiones y señalamientos difundidos por terceros.
+                No presenta esas afirmaciones como hechos probados; las publicaciones
+                están enlazadas para consultar su fuente y contexto originales.
+              </p>
+            </div>
+
+            <div className="central-visual-grid" aria-label="Imágenes de contexto">
+              <figure className="central-visual central-visual-main">
+                <img src="/x/medallo-mor-media.jpg" alt="Composición incluida en una publicación enlazada sobre Jorge Laverde" loading="lazy" />
+                <figcaption>Publicación enlazada en X</figcaption>
+              </figure>
+              <figure className="central-visual">
+                <img src="/campana/contralor-laverde-1.jpeg" alt="Pieza gráfica sobre la candidatura de Jorge Laverde" loading="lazy" />
+              </figure>
+              <figure className="central-visual">
+                <img src="/laverde/laverde-1.jpg" alt="Fotografía de Jorge Laverde" loading="lazy" />
+              </figure>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="hero" id="archivo">
-        <div className="hero-collage" aria-hidden="true">
-          <div className="campaign-poster campaign-poster-a">
-            <img src="/campana/contralor-laverde-1.jpeg" alt="" loading="eager" />
-          </div>
-          <div className="campaign-poster campaign-poster-b">
-            <img src="/campana/contralor-laverde-2.jpeg" alt="" loading="eager" />
-          </div>
-        </div>
-
-        <div className="hero-topline">
-          <span>No podemos premiar el acoso</span>
-          <span>Colombia está en alerta</span>
-        </div>
-
-        <div className="hero-copy">
-          <p className="kicker"><span /> #ContralorLaverde · Archivo ciudadano</p>
-          <h2>
-            Muro de <em>Acoso</em>
-            <br />
-            de Jorge Eliécer Laverde
-          </h2>
-          <p className="hero-description">
-            Un archivo visual que reúne publicaciones, capturas y enlaces de interés
-            público alrededor de su aspiración a la Contraloría General.
-          </p>
-        </div>
-
-        <div className="hero-footer">
-          <div className="hero-index">
-            <span>6</span>
-            <p>publicaciones en X</p>
-          </div>
-          <div className="hero-index">
-            <span>3</span>
-            <p>páginas del informe central</p>
-          </div>
-          <p className="hero-disclaimer">
-            Este sitio recopila expresiones de terceros y no reemplaza una decisión
-            judicial ni disciplinaria. Consulte siempre la fuente original.
-          </p>
-        </div>
-      </section>
-
-      <div className="ticker" aria-label="Archivo de publicaciones y denuncias">
-        <div className="ticker-track">
-          <span>INFORME CENTRAL</span><i>✦</i><span>FUENTES ENLAZADAS</span><i>✦</i>
-          <span>CONTEXTO DOCUMENTAL</span><i>✦</i><span>MEMORIA DIGITAL</span><i>✦</i>
-          <span aria-hidden="true">INFORME CENTRAL</span><i aria-hidden="true">✦</i>
-          <span aria-hidden="true">FUENTES ENLAZADAS</span><i aria-hidden="true">✦</i>
-        </div>
-      </div>
-
-      <section className="report-section" id="informe">
-        <div className="report-header section-shell">
-          <div>
-            <p className="eyebrow">01 — Adaptación de INFO LAVERDE</p>
-            <h2>El documento<br /><span>en contexto</span></h2>
-          </div>
-          <div className="report-intro">
+      <section className="report-section" id="investigacion">
+        <a
+          className="voragine-feature section-shell"
+          href="https://voragine.co/bajo-reserva/la-congresista-que-fue-formula-de-mario-castano-y-gerente-de-telecafe/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Leer la investigación de Vorágine"
+        >
+          <div className="voragine-feature-copy">
+            <p className="eyebrow">01 — Investigación periodística · Vorágine</p>
+            <h2>La congresista que fue fórmula de Mario Castaño y gerente de Telecafé</h2>
             <p>
-              Esta sección adapta las tres páginas del PDF aportado. Resume sus
-              afirmaciones, conserva las atribuciones y distingue entre hechos
-              verificables, versiones y señalamientos.
+              La investigación relaciona contratos de Telecafé y Eje 360 Producciones
+              con el entorno político de Mario Castaño y menciona los vínculos de
+              Nicolás Cifuentes con Jorge Eliécer Laverde.
             </p>
-            <a href="/documentos/info-laverde.pdf" target="_blank" rel="noopener noreferrer">
-              Abrir INFO LAVERDE.pdf <span aria-hidden="true">↗</span>
-            </a>
+            <span>Leer el artículo completo en Vorágine ↗</span>
           </div>
-        </div>
+          <div className="voragine-feature-media">
+            <img src="/laverde/laverde-5.jpeg" alt="Jorge Eliécer Laverde en una imagen de contexto" loading="lazy" />
+          </div>
+        </a>
 
         <div className="report-chapters section-shell">
           <article className="report-card report-card-lead">
@@ -324,32 +335,32 @@ export default function Home() {
             <p className="report-label">Trayectoria y Comisión Sexta</p>
             <h3>Una permanencia prolongada bajo escrutinio público</h3>
             <p>
-              El documento presenta a Jorge Eliécer Laverde como un funcionario de
-              larga permanencia en la Secretaría de la Comisión Sexta del Senado. Cita
-              cuestionamientos periodísticos sobre un resultado de 100/100 en pruebas
-              de conocimiento, la falta de rotación en el cargo y su capacidad de
-              mediación entre congresistas y sectores regulados por esa comisión.
+              Jorge Eliécer Laverde ha permanecido durante años en la Secretaría de la
+              Comisión Sexta del Senado. Cuestionamientos periodísticos han puesto el
+              foco en un resultado de 100/100 en pruebas de conocimiento, la falta de
+              rotación en el cargo y su capacidad de mediación entre congresistas y
+              sectores regulados por esa comisión.
             </p>
             <p>
-              También atribuye una cercanía personal y política con Lidio García y
-              plantea que esa relación debe examinarse frente al proceso de elección
-              del Contralor General.
+              También se ha señalado una cercanía personal y política con Lidio García,
+              relación que merece examen frente al proceso de elección del Contralor
+              General.
             </p>
           </article>
 
           <article className="report-card">
             <span className="report-number">02</span>
             <p className="report-label">Relaciones y posibles conflictos</p>
-            <h3>Los vínculos mencionados por el informe</h3>
+            <h3>Los vínculos señalados públicamente</h3>
             <p>
-              El PDF retoma una publicación de Vorágine que relaciona políticamente a
-              Laverde con Mario Castaño, relación que él negó. Además, señala posibles
-              conflictos de interés alrededor de contratos y nombramientos asociados a
-              Nicolás Cifuentes y Olga Lucía Ríos Gaitán.
+              Vorágine publicó que Laverde era cercano a Mario Castaño, relación que
+              Laverde negó. La investigación también señaló posibles conflictos de
+              interés alrededor de contratos y nombramientos asociados a Nicolás
+              Cifuentes y Olga Lucía Ríos Gaitán.
             </p>
             <p>
-              Estas afirmaciones pertenecen al documento aportado y deben contrastarse
-              con los expedientes, respuestas y fuentes originales enlazadas.
+              Estas afirmaciones deben contrastarse con los expedientes, respuestas y
+              fuentes periodísticas enlazadas.
             </p>
           </article>
 
@@ -358,34 +369,32 @@ export default function Home() {
             <p className="report-label">Denuncia pública y respuesta</p>
             <h3>Un señalamiento que el propio Laverde rechazó</h3>
             <p>
-              El informe menciona la denuncia anónima de presunto acoso sexual y
-              laboral divulgada públicamente por la senadora María José Pizarro.
-              También consigna que Laverde rechazó la acusación, pidió la intervención
-              de las autoridades y afirmó no haber incurrido en una conducta
-              inapropiada.
+              Una denuncia anónima por presunto acoso sexual y laboral fue divulgada
+              públicamente por la senadora María José Pizarro. Laverde rechazó la
+              acusación, pidió la intervención de las autoridades y afirmó no haber
+              incurrido en una conducta inapropiada.
             </p>
           </article>
 
           <article className="report-card report-card-assets">
             <span className="report-number">04</span>
             <p className="report-label">Entorno familiar y patrimonio</p>
-            <h3>Bienes y relaciones descritos en el PDF</h3>
+            <h3>Una vida ostentosa de dudosa procedencia</h3>
             <p>
-              El documento identifica a María Camila Laverde como hija del aspirante y
-              menciona su relación con Juan Pablo Ríos Pérez. Asimismo, formula
-              preguntas sobre dos inmuebles que, según el material aportado, figuran a
-              su nombre: un lote en La Dorada y un apartamento en Bogotá.
+              Publicaciones enlazadas formulan preguntas sobre el valor de un reloj que
+              porta Laverde y sobre dos inmuebles atribuidos a su entorno familiar: un
+              lote en La Dorada y un apartamento en Bogotá.
             </p>
             <p>
-              La biblioteca documental de esta página conserva los archivos aportados
-              para que el lector pueda revisarlos directamente.
+              Los señalamientos se presentan con atribución y deben ser contrastados con
+              registros oficiales y las respuestas de las personas mencionadas.
             </p>
           </article>
         </div>
 
         <div className="report-sources section-shell">
           <div>
-            <p className="eyebrow light">Fuentes citadas dentro del PDF</p>
+            <p className="eyebrow light">Fuentes abiertas</p>
             <h3>Consulte las referencias originales</h3>
           </div>
           <div className="report-source-links">
@@ -394,7 +403,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span>01</span> Vorágine — artículo citado en el documento <b>↗</b>
+              <span>01</span> Vorágine — La congresista que fue fórmula de Mario Castaño y gerente de Telecafé <b>↗</b>
             </a>
             <a
               href="https://www.eltiempo.com/politica/congreso/jorge-eliecer-laverde-secretario-de-comision-vi-rechaza-acusacion-de-acoso-800610"
@@ -408,21 +417,26 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span>03</span> Infobae — nota citada en el documento <b>↗</b>
+              <span>03</span> Infobae — cobertura de la denuncia y la respuesta <b>↗</b>
             </a>
           </div>
         </div>
       </section>
 
-      <section className="instagram-section">
+      <section className="instagram-section" id="amistades">
         <div className="instagram-heading section-shell">
           <div>
-            <p className="eyebrow">02 — Publicaciones de Instagram</p>
-            <h2>Imágenes<br />aportadas</h2>
+            <p className="eyebrow">02 — Evidencias de sus amistades</p>
+            <h2>Amistad con el corrupto Mario Castaño</h2>
           </div>
           <p>
-            Las fotografías se muestran como parte del contexto documental. Cada
-            bloque abre la publicación de Instagram indicada en una pestaña nueva.
+            La misma investigación señaló posibles conflictos de interés: un amigo
+            cercano de Laverde, Nicolás Cifuentes, obtuvo contrato en la Comisión Sexta
+            y Laverde fue supervisor; además, su esposa Olga Lucía Ríos Gaitán fue
+            contratada como asesora en MinTIC durante la gestión de Karen Abudinen, y
+            fue ratificada por el ex director del DAPRE Mauricio Lizcano, mientras la
+            Comisión Sexta tenía control político sobre temas TIC, incluido el caso
+            Centros Poblados.
           </p>
         </div>
 
@@ -437,14 +451,14 @@ export default function Home() {
             <div className="instagram-media">
               <img
                 src="/instagram/maria-camila-laverde-1.jpg"
-                alt="María Camila Laverde y Juan Pablo Ríos en una fotografía de embarazo publicada en Instagram"
+                alt="María Camila Laverde y Juan Pablo Ríos en una fotografía publicada en Instagram"
                 loading="lazy"
               />
               <span>Instagram ↗</span>
             </div>
             <div className="instagram-caption">
               <small>Publicación enlazada · 2026</small>
-              <h3>Contexto familiar mencionado en el informe</h3>
+              <h3>Relaciones personales señaladas públicamente</h3>
               <p>Fotografía recuperada de la publicación original compartida.</p>
             </div>
           </a>
@@ -471,68 +485,68 @@ export default function Home() {
             </div>
             <div className="instagram-caption">
               <small>Carrusel enlazado · 2024</small>
-              <h3>Álbum familiar aportado</h3>
+              <h3>Evidencias de sus amistades</h3>
               <p>Incluye las dos imágenes adjuntas y abre el carrusel original.</p>
             </div>
           </a>
         </div>
       </section>
 
-      <section className="sources section-shell" id="otras-publicaciones">
-        <div className="section-heading">
-          <p className="eyebrow">03 — Más voces públicas</p>
-          <h2>Otras<br />publicaciones en X</h2>
-          <p className="section-intro">
-            El archivo conserva las fuentes que ya formaban parte del sitio. Cada ficha
-            conduce a la publicación original para consultar su contexto completo.
-          </p>
-        </div>
-
-        <div className="source-list">
-          {sources.map((source) => (
-            <a
-              className="source-card"
-              href={source.url}
-              key={source.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Abrir publicación de ${source.account} en X`}
-            >
-              <div className="source-meta">
-                <div className="source-number">{source.number}</div>
-                <div className="x-mark">X</div>
-                <div className="source-copy">
-                  <p>Publicación enlazada</p>
-                  <h3>{source.account}</h3>
-                  <span>{source.handle}</span>
-                </div>
-                <span className="source-arrow" aria-hidden="true">↗</span>
-              </div>
-              <div className="source-preview">
-                <img
-                  src={source.image}
-                  alt={`Captura de la publicación de ${source.account} en X`}
-                  loading="lazy"
-                />
-                <span>Ver publicación en X ↗</span>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-
       <section className="wall-section" id="muro">
         <div className="wall-title section-shell">
           <div>
-            <p className="eyebrow light">04 — Registro visual</p>
-            <h2>El muro<br />documental</h2>
+            <p className="eyebrow light">03 — Publicaciones y registro visual</p>
+            <h2>El muro de la infamia de Laverde</h2>
           </div>
           <p>
-            Capturas aportadas para preservar una muestra de la conversación pública.
-            El contenido pertenece a sus respectivos autores.
+            Publicaciones y capturas aportadas para preservar una muestra de la
+            conversación pública. Cada pieza conserva el enlace o la imagen disponible
+            y el contenido pertenece a sus respectivos autores.
           </p>
         </div>
 
+        <div className="wall-publications section-shell">
+          <div className="wall-subheading">
+            <p>Publicaciones enlazadas en X</p>
+            <span>Abra cada ficha para consultar la fuente original ↗</span>
+          </div>
+          <div className="source-list wall-source-list">
+            {sources.map((source) => (
+              <a
+                className="source-card"
+                href={source.url}
+                key={source.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Abrir publicación de ${source.account} en X`}
+              >
+                <div className="source-meta">
+                  <div className="source-number">{source.number}</div>
+                  <div className="x-mark">X</div>
+                  <div className="source-copy">
+                    <p>Publicación enlazada</p>
+                    <h3>{source.account}</h3>
+                    <span>{source.handle}</span>
+                  </div>
+                  <span className="source-arrow" aria-hidden="true">↗</span>
+                </div>
+                <div className="source-preview">
+                  <img
+                    src={source.image}
+                    alt={`Captura de la publicación de ${source.account} en X`}
+                    loading="lazy"
+                  />
+                  <span>Ver publicación en X ↗</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="evidence-divider section-shell">
+          <p>Capturas y evidencias visuales</p>
+          <span>Abra cada imagen para verla en tamaño completo ↗</span>
+        </div>
         <div className="evidence-grid section-shell">
           {screenshots.map((shot, index) => (
             <article className={`evidence-card evidence-${index + 1}`} key={shot.src}>
@@ -547,43 +561,12 @@ export default function Home() {
                 </div>
               </a>
               <div className="evidence-caption">
-                <span>Documento 0{index + 1}</span>
+                <span>Evidencia 0{index + 1}</span>
                 <h3>{shot.title}</h3>
                 <p>{shot.description}</p>
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="document-library section-shell" id="documentos">
-          <div className="document-library-heading">
-            <p className="eyebrow light">05 — Archivos aportados</p>
-            <h2>Documentos<br />en PDF</h2>
-            <p>
-              Los archivos se publican sin modificaciones. Ábralos en una pestaña
-              nueva para consultar todas sus páginas.
-            </p>
-          </div>
-          <div className="document-list">
-            {documents.map((document) => (
-              <a
-                className="document-card"
-                href={document.href}
-                key={document.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Abrir ${document.title}`}
-              >
-                <span className="document-number">{document.number}</span>
-                <span className="pdf-badge">PDF</span>
-                <span className="document-copy">
-                  <strong>{document.title}</strong>
-                  <small>{document.pages}</small>
-                </span>
-                <span className="document-arrow" aria-hidden="true">↗</span>
-              </a>
-            ))}
-          </div>
         </div>
       </section>
 

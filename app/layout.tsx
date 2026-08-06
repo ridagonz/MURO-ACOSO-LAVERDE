@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteUrl = new URL(`${protocol}://${host}`);
   const title = "Muro de Acoso de Jorge Eliécer Laverde";
   const description =
-    "Informe central, publicaciones enlazadas y documentos aportados sobre Jorge Eliécer Laverde.";
+    "Investigación periodística, publicaciones enlazadas y evidencias visuales sobre Jorge Eliécer Laverde.";
   const socialImage = new URL("/og.png", siteUrl).toString();
 
   return {

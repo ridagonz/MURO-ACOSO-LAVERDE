@@ -12,12 +12,16 @@ test("declares the finished site's metadata and main sections", async () => {
 
   assert.match(layout, /Muro de Acoso de Jorge Eli(?:é|\u00e9)cer Laverde/);
   assert.match(page, /id="fuentes"/);
-  assert.match(page, /id="informe"/);
+  assert.match(page, /id="investigacion"/);
+  assert.match(page, /id="amistades"/);
   assert.match(page, /id="muro"/);
   assert.match(page, /Paisa_Antiuribe\/status\/2085160382478565576/);
   assert.match(page, /SaVanessCa\/status\/2084743546133696830/);
+  assert.match(page, /La congresista que fue f(?:ó|\u00f3)rmula de Mario Casta(?:ñ|\u00f1)o y gerente de Telecaf(?:é|\u00e9)/);
+  assert.match(page, /El muro de la infamia de Laverde/i);
   assert.match(page, /<ImageUploader \/>/);
   assert.doesNotMatch(page, /_sites-preview|SkeletonPreview|codex-preview/);
+  assert.doesNotMatch(page, /\.pdf|INFO LAVERDE|El documento/i);
 });
 
 test("keeps every curated image referenced by the home page", async () => {
@@ -42,20 +46,6 @@ test("keeps every curated image referenced by the home page", async () => {
   ];
 
   for (const path of imagePaths) {
-    await access(new URL(path, projectRoot));
-    assert.match(page, new RegExp(path.replace("public", "").replaceAll(".", "\\.")));
-  }
-});
-
-test("publishes every contributed PDF from the document library", async () => {
-  const page = await readFile(new URL("app/page.tsx", projectRoot), "utf8");
-  const pdfPaths = [
-    "public/documentos/info-laverde.pdf",
-    "public/documentos/139719766-139721531-WPADDPHOJVQXGBTJREJI139721531.pdf",
-    "public/documentos/139719765-139721530-VAGIWOXIDZATNRZCCQAY139721530.pdf",
-  ];
-
-  for (const path of pdfPaths) {
     await access(new URL(path, projectRoot));
     assert.match(page, new RegExp(path.replace("public", "").replaceAll(".", "\\.")));
   }
