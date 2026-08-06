@@ -6,24 +6,28 @@ const sources = [
     account: "María José Pizarro",
     handle: "@pizarromariajo",
     url: "https://x.com/pizarromariajo/status/1696257570892071049?s=48",
+    image: "/x/maria-jose-pizarro.png",
   },
   {
     number: "02",
     account: "María Jimena Duzán",
     handle: "@MJDuzan",
     url: "https://x.com/MJDuzan/status/2084259418225398207",
+    image: "/x/maria-jimena-duzan.png",
   },
   {
     number: "03",
     account: "Ricardo Ospina",
     handle: "@ricarospina",
     url: "https://x.com/ricarospina/status/2082611087132758499",
+    image: "/x/ricardo-ospina.png",
   },
   {
     number: "04",
     account: "Radar Contralor",
     handle: "@radarcontralor",
     url: "https://x.com/radarcontralor/status/2084313574835442096",
+    image: "/x/radar-contralor.png",
   },
 ];
 
@@ -45,6 +49,27 @@ const screenshots = [
     title: "Reacciones ciudadanas",
     description:
       "Captura aportada con comentarios de usuarios sobre la aspiración a la Contraloría.",
+  },
+  {
+    src: "/documentos/consulta-general-inmuebles.jpeg",
+    title: "Consulta general de inmuebles",
+    description:
+      "Captura aportada de una consulta de estado jurídico de inmuebles. Se conserva con el aviso de confidencialidad incluido en el archivo original.",
+  },
+];
+
+const documents = [
+  {
+    number: "01",
+    title: "Informe documental 139719766",
+    pages: "6 páginas · PDF",
+    href: "/documentos/139719766-139721531-WPADDPHOJVQXGBTJREJI139721531.pdf",
+  },
+  {
+    number: "02",
+    title: "Informe documental 139719765",
+    pages: "5 páginas · PDF",
+    href: "/documentos/139719765-139721530-VAGIWOXIDZATNRZCCQAY139721530.pdf",
   },
 ];
 
@@ -76,6 +101,7 @@ export default function Home() {
         <nav aria-label="Navegación principal">
           <a href="#fuentes">Fuentes</a>
           <a href="#muro">Muro</a>
+          <a href="#documentos">Documentos</a>
           <a href="#aportes">Cargar imágenes</a>
         </nav>
         <a className="header-cta" href="#fuentes">
@@ -125,8 +151,8 @@ export default function Home() {
             <p>publicaciones enlazadas</p>
           </div>
           <div className="hero-index">
-            <span>3</span>
-            <p>capturas documentales</p>
+            <span>6</span>
+            <p>archivos documentales</p>
           </div>
           <p className="hero-disclaimer">
             Este sitio recopila expresiones de terceros y no reemplaza una decisión
@@ -165,14 +191,24 @@ export default function Home() {
               rel="noopener noreferrer"
               aria-label={`Abrir publicación de ${source.account} en X`}
             >
-              <div className="source-number">{source.number}</div>
-              <div className="x-mark">X</div>
-              <div className="source-copy">
-                <p>Publicación enlazada</p>
-                <h3>{source.account}</h3>
-                <span>{source.handle}</span>
+              <div className="source-meta">
+                <div className="source-number">{source.number}</div>
+                <div className="x-mark">X</div>
+                <div className="source-copy">
+                  <p>Publicación enlazada</p>
+                  <h3>{source.account}</h3>
+                  <span>{source.handle}</span>
+                </div>
+                <span className="source-arrow" aria-hidden="true">↗</span>
               </div>
-              <span className="source-arrow" aria-hidden="true">↗</span>
+              <div className="source-preview">
+                <img
+                  src={source.image}
+                  alt={`Captura de la publicación de ${source.account} en X`}
+                  loading="lazy"
+                />
+                <span>Ver publicación en X ↗</span>
+              </div>
             </a>
           ))}
         </div>
@@ -210,6 +246,37 @@ export default function Home() {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="document-library section-shell" id="documentos">
+          <div className="document-library-heading">
+            <p className="eyebrow light">03 — Archivos aportados</p>
+            <h2>Documentos<br />en PDF</h2>
+            <p>
+              Los archivos se publican sin modificaciones. Ábralos en una pestaña
+              nueva para consultar todas sus páginas.
+            </p>
+          </div>
+          <div className="document-list">
+            {documents.map((document) => (
+              <a
+                className="document-card"
+                href={document.href}
+                key={document.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Abrir ${document.title}`}
+              >
+                <span className="document-number">{document.number}</span>
+                <span className="pdf-badge">PDF</span>
+                <span className="document-copy">
+                  <strong>{document.title}</strong>
+                  <small>{document.pages}</small>
+                </span>
+                <span className="document-arrow" aria-hidden="true">↗</span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -78,7 +78,6 @@ export default defineConfig(async () => {
           },
         }
       : undefined,
-
     plugins,
   };
 });

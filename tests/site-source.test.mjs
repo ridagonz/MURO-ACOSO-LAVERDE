@@ -25,9 +25,27 @@ test("keeps every curated image referenced by the home page", async () => {
     "public/evidencias/captura-1.png",
     "public/evidencias/captura-2.png",
     "public/evidencias/captura-3.png",
+    "public/x/maria-jose-pizarro.png",
+    "public/x/maria-jimena-duzan.png",
+    "public/x/ricardo-ospina.png",
+    "public/x/radar-contralor.png",
+    "public/documentos/consulta-general-inmuebles.jpeg",
   ];
 
   for (const path of imagePaths) {
+    await access(new URL(path, projectRoot));
+    assert.match(page, new RegExp(path.replace("public", "").replaceAll(".", "\\.")));
+  }
+});
+
+test("publishes both contributed PDFs from the document library", async () => {
+  const page = await readFile(new URL("app/page.tsx", projectRoot), "utf8");
+  const pdfPaths = [
+    "public/documentos/139719766-139721531-WPADDPHOJVQXGBTJREJI139721531.pdf",
+    "public/documentos/139719765-139721530-VAGIWOXIDZATNRZCCQAY139721530.pdf",
+  ];
+
+  for (const path of pdfPaths) {
     await access(new URL(path, projectRoot));
     assert.match(page, new RegExp(path.replace("public", "").replaceAll(".", "\\.")));
   }

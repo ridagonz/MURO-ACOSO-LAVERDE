@@ -435,6 +435,7 @@ img {
 
 .section-heading h2,
 .wall-title h2,
+.document-library-heading h2,
 .uploads-heading h2 {
   margin: 0;
   font-family: Arial Black, Arial, sans-serif;
@@ -459,22 +460,33 @@ img {
 }
 
 .source-card {
+  display: block;
+  padding: 0 8px 26px;
+  border-bottom: 1px solid var(--ink);
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.source-meta {
   display: grid;
   grid-template-columns: 52px 52px 1fr auto;
   gap: 24px;
   align-items: center;
   min-height: 150px;
-  padding: 25px 8px;
-  border-bottom: 1px solid var(--ink);
-  transition: background 180ms ease, padding 180ms ease;
+  padding: 25px 0;
 }
 
 .source-card:hover,
 .source-card:focus-visible {
-  padding-inline: 22px;
   color: white;
   background: var(--signal-deep);
   outline: none;
+}
+
+.source-card:hover .source-copy p,
+.source-card:focus-visible .source-copy p,
+.source-card:hover .source-arrow,
+.source-card:focus-visible .source-arrow {
+  color: var(--acid);
 }
 
 .source-number {
@@ -520,6 +532,40 @@ img {
 .source-arrow {
   font-size: 34px;
   color: var(--signal);
+}
+
+.source-preview {
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background: #000;
+  border: 1px solid rgba(16, 11, 18, 0.5);
+}
+
+.source-preview img {
+  width: 100%;
+  height: auto;
+  max-height: 720px;
+  object-fit: contain;
+  object-position: left top;
+  transition: transform 350ms ease;
+}
+
+.source-card:hover .source-preview img,
+.source-card:focus-visible .source-preview img {
+  transform: scale(1.01);
+}
+
+.source-preview > span {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 10px 12px;
+  background: rgba(16, 11, 18, 0.92);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 9px;
+  font-weight: 800;
 }
 
 .wall-section {
@@ -574,6 +620,11 @@ img {
   margin-top: 40px;
 }
 
+.evidence-4 {
+  grid-column: 7 / 13;
+  margin-top: 80px;
+}
+
 .evidence-image {
   position: relative;
   aspect-ratio: 0.81;
@@ -591,6 +642,16 @@ img {
 .evidence-3 .evidence-image {
   aspect-ratio: 0.91;
   box-shadow: 16px 16px 0 #524f48;
+}
+
+.evidence-4 .evidence-image {
+  aspect-ratio: 16 / 8;
+  box-shadow: -16px 16px 0 var(--acid);
+}
+
+.evidence-4 .evidence-image img {
+  object-fit: contain;
+  object-position: center;
 }
 
 .evidence-image img {
@@ -646,6 +707,115 @@ img {
   color: rgba(255, 255, 255, 0.5);
   font-family: Georgia, serif;
   line-height: 1.45;
+}
+
+.document-library {
+  margin-top: 140px;
+  padding-top: 110px;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  scroll-margin-top: 92px;
+}
+
+.document-library-heading {
+  display: grid;
+  grid-template-columns: 1fr 0.55fr;
+  align-items: end;
+  gap: 7vw;
+  margin-bottom: 58px;
+}
+
+.document-library-heading .eyebrow {
+  grid-column: 1 / -1;
+  margin-bottom: -8px;
+}
+
+.document-library-heading > p:last-child {
+  max-width: 440px;
+  margin: 0;
+  padding-top: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.32);
+  font-family: Georgia, serif;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.document-list {
+  border-top: 1px solid rgba(255, 255, 255, 0.38);
+}
+
+.document-card {
+  display: grid;
+  grid-template-columns: 42px 66px 1fr auto;
+  gap: 22px;
+  align-items: center;
+  min-height: 126px;
+  padding: 24px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.38);
+  transition: padding 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.document-card:hover,
+.document-card:focus-visible {
+  padding-inline: 24px;
+  color: var(--ink);
+  background: var(--acid);
+  outline: none;
+}
+
+.document-number {
+  align-self: start;
+  color: var(--acid);
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.document-card:hover .document-number,
+.document-card:focus-visible .document-number {
+  color: var(--signal);
+}
+
+.pdf-badge {
+  display: grid;
+  place-items: center;
+  width: 66px;
+  height: 66px;
+  border: 1px solid currentColor;
+  font-family: Arial Black, Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.document-copy {
+  display: grid;
+  gap: 8px;
+}
+
+.document-copy strong {
+  font-size: clamp(1.2rem, 2.2vw, 2rem);
+  letter-spacing: -0.035em;
+}
+
+.document-copy small {
+  color: rgba(255, 255, 255, 0.55);
+  font-family: Georgia, serif;
+  font-size: 13px;
+}
+
+.document-card:hover .document-copy small,
+.document-card:focus-visible .document-copy small {
+  color: rgba(16, 11, 18, 0.65);
+}
+
+.document-arrow {
+  color: var(--acid);
+  font-size: 34px;
+}
+
+.document-card:hover .document-arrow,
+.document-card:focus-visible .document-arrow {
+  color: var(--signal);
 }
 
 .uploads {
@@ -995,6 +1165,10 @@ img {
     grid-template-columns: 1fr;
   }
 
+  .document-library-heading {
+    grid-template-columns: 1fr;
+  }
+
   .uploads-heading {
     grid-template-columns: 1fr;
   }
@@ -1124,9 +1298,14 @@ img {
   }
 
   .source-card {
+    padding-inline: 0;
+  }
+
+  .source-meta {
     grid-template-columns: 30px 44px 1fr auto;
     gap: 12px;
     min-height: 126px;
+    padding-inline: 8px;
   }
 
   .x-mark {
@@ -1136,7 +1315,7 @@ img {
 
   .source-card:hover,
   .source-card:focus-visible {
-    padding-inline: 8px;
+    padding-inline: 0;
   }
 
   .wall-section {
@@ -1154,14 +1333,47 @@ img {
 
   .evidence-card,
   .evidence-2,
-  .evidence-3 {
+  .evidence-3,
+  .evidence-4 {
     margin: 0 0 80px;
   }
 
   .evidence-image,
   .evidence-2 .evidence-image,
-  .evidence-3 .evidence-image {
+  .evidence-3 .evidence-image,
+  .evidence-4 .evidence-image {
     box-shadow: 8px 8px 0 var(--signal);
+  }
+
+  .document-library {
+    margin-top: 40px;
+    padding-top: 80px;
+  }
+
+  .document-library-heading {
+    margin-bottom: 46px;
+  }
+
+  .document-card {
+    grid-template-columns: 28px 48px 1fr auto;
+    gap: 12px;
+    min-height: 104px;
+    padding-inline: 4px;
+  }
+
+  .document-card:hover,
+  .document-card:focus-visible {
+    padding-inline: 8px;
+  }
+
+  .pdf-badge {
+    width: 48px;
+    height: 48px;
+    font-size: 9px;
+  }
+
+  .document-arrow {
+    font-size: 26px;
   }
 
   .uploads-heading {
