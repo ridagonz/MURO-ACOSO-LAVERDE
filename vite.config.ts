@@ -1,4 +1,5 @@
 import vinext from "vinext";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, type PluginOption } from "vite";
 import hostingConfig from "./.openai/hosting.json";
 import { sites } from "./build/sites-vite-plugin";
@@ -45,7 +46,11 @@ export default defineConfig(async () => {
     process.env.NITRO_PRESET = "vercel";
   }
 
-  const plugins: PluginOption[] = [vinext(), sites()];
+  const plugins: PluginOption[] = [
+    tailwindcss(),
+    vinext(),
+    sites(),
+  ];
 
   if (isVercel) {
     const { nitro } = await import("nitro/vite");
